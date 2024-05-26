@@ -1,12 +1,15 @@
-import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { Image, StyleSheet, View, Text, TouchableOpacity, Modal } from "react-native";
 import Slider from "@react-native-community/slider";
 import { useState } from "react";
+import { ModalPassword } from "@/components";
+
 
 let charset = "abcdefghijklmnopqrstuvxzABCDEFGHIJKLMNOPQRSTUVXZ0123456789";
 
 export default function HomeScreen() {
   const [size, setSize] = useState(10);
   const [passwordValue, setPasswordValue] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
 
   const generatePassword = () => {
     let password = "";
@@ -16,6 +19,7 @@ export default function HomeScreen() {
     }
 
     setPasswordValue(password);
+    setModalVisible(true);
   };
 
   return (
@@ -39,6 +43,10 @@ export default function HomeScreen() {
       <TouchableOpacity style={styles.button} onPress={generatePassword}>
         <Text style={styles.buttonText}>Gerar senha</Text>
       </TouchableOpacity>
+
+      <Modal visible={modalVisible} animationType="fade" transparent={true}>
+        <ModalPassword password={passwordValue} handleClose={() => setModalVisible(false)} />
+      </Modal>
     </View>
   );
 }
