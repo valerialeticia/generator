@@ -2,25 +2,17 @@ import { Image, StyleSheet, View, Text, TouchableOpacity, Modal } from "react-na
 import Slider from "@react-native-community/slider";
 import { useState } from "react";
 import { ModalPassword } from "@/components";
-
-
-let charset = "abcdefghijklmnopqrstuvxzABCDEFGHIJKLMNOPQRSTUVXZ0123456789";
+import { useHome } from "@/hooks";
 
 export default function HomeScreen() {
-  const [size, setSize] = useState(10);
-  const [passwordValue, setPasswordValue] = useState("");
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const generatePassword = () => {
-    let password = "";
-
-    for (let i = 0, n = charset.length; i < size; i++) {
-      password += charset.charAt(Math.floor(Math.random() * n));
-    }
-
-    setPasswordValue(password);
-    setModalVisible(true);
-  };
+  const { 
+    size, 
+    setSize, 
+    generatePassword, 
+    modalVisible, 
+    passwordValue, 
+    setModalVisible 
+  } = useHome();
 
   return (
     <View style={styles.container}>
