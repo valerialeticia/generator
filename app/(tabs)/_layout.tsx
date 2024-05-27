@@ -24,11 +24,11 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="my-passwords"
         options={{
-          title: 'Explore',
+          title: 'Minhas senhas',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'key-sharp' : 'key-outline'} color={color} />
           ),
         }}
       />

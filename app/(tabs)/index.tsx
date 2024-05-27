@@ -1,6 +1,5 @@
 import { Image, StyleSheet, View, Text, TouchableOpacity, Modal } from "react-native";
 import Slider from "@react-native-community/slider";
-import { useState } from "react";
 import { ModalPassword } from "@/components";
 import { useHome } from "@/hooks";
 
