@@ -1,30 +1,10 @@
-import { useStorage } from '@/hooks/useStorage';
-import { useState,  useCallback } from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useFocusEffect } from  'expo-router'
 import { PasswordItem } from '@/components';
+import { useMyPasswords } from '@/hooks/useMyPasswords';
 
 export default function TabTwoScreen() {
-  const [listPasswords, setListPasswords] = useState([]);
-  const { getItem, removeItem } = useStorage();
-
-  useFocusEffect(
-    useCallback(() => {
-      const loadPasswords = async () => {
-        const passwords = await getItem('@pass')
-        setListPasswords(passwords)
-       }
-    
-       loadPasswords()
-    }, [])
-  )
-
-  const handleRemovePassword = async (item: string) => {
-    const passwords = await removeItem('@pass', item)
-    setListPasswords(passwords)
-  }
-
+  const { listPasswords, handleRemovePassword } = useMyPasswords()
 
   return (
     <SafeAreaView style={{ flex: 1}}>
