@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity, Pressable } from "react-native"
-import * as Clipboard from 'expo-clipboard'
-import { useStorage } from "@/hooks/useStorage";
+import { useModalPassword } from "@/hooks";
 
 type Props = {
   password: string;
@@ -8,17 +7,7 @@ type Props = {
 }
 
 const ModalPassword = ({ password, handleClose }: Props) => {
-  const { saveItem } = useStorage();
-
-  const handleCopyPassword = async () => {
-    await Clipboard.setStringAsync(password)
-
-    await saveItem('@pass', password)
-
-    alert('Senha salva  com sucesso!')
-
-    handleClose()
-  }
+  const { handleCopyPassword  } = useModalPassword({password, handleClose})
 
   return (
     <View style={styles.container}>
