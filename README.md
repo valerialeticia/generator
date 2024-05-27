@@ -22,4 +22,4 @@ App gerador de senhas com o objetivo de aprender sobre React Native.
 - [expo](https://expo.dev/)
 - [expo router](https://docs.expo.dev/router/introduction/)
 - [Typescript](https://www.typescriptlang.org/)
-- [Jest] (https://jestjs.io/pt-BR/)
+- [Jest](https://jestjs.io/pt-BR/)
